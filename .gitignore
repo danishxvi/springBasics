@@ -1,0 +1,15 @@
+# --- IDE CONFIGS ---
+.metadata/
+.settings/
+.project
+.classpath
+
+# --- BUILD ARTIFACTS ---
+/target/
+/bin/
+
+# --- SENSITIVE DATA ---
+*.properties
+*.env
+.env.*
+*.log
