@@ -14,5 +14,8 @@ public class App {
 
 		// Uses the bean provided by Spring
 		dev.coding();
+		
+		// Closes the Spring container
+		((ClassPathXmlApplicationContext) context).close();
 	}
 }
