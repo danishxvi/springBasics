@@ -40,7 +40,7 @@ public class App {
          */
 
         ApplicationContext context =
-                new ClassPathXmlApplicationContext("setterPrimitive.xml");
+                new ClassPathXmlApplicationContext("injectionSetterPrimitive.xml");
 
         System.out.println("--------------------------------");
 

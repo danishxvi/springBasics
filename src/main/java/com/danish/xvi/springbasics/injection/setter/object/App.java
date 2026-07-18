@@ -34,7 +34,7 @@ public class App {
          */
 
         ApplicationContext context =
-                new ClassPathXmlApplicationContext("setterObject.xml");
+                new ClassPathXmlApplicationContext("injectionSetterObject.xml");
 
         System.out.println("--------------------------------");
 

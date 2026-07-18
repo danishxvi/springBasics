@@ -44,7 +44,7 @@
     -->
 
     <bean id="laptop"
-          class="com.danish.xvi.springbasics.setter.object.Laptop"/>
+          class="com.danish.xvi.springbasics.injection.setter.object.Laptop"/>
 
     <bean id="developer"
           class="com.danish.xvi.springbasics.injection.setter.object.Developer">
