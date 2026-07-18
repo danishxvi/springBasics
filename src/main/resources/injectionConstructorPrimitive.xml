@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    ===========================================================
+    CONSTRUCTOR INJECTION USING PRIMITIVE DATA TYPES
+    ===========================================================
+
+    Constructor Injection means Spring injects dependencies
+    while creating the object itself.
+
+    Unlike Setter Injection:
+
+        Step 1
+        Create Object
+
+        Step 2
+        Call Setter Methods
+
+    Constructor Injection performs:
+
+        Step 1
+        Create Object
+
+        Step 2
+        Pass constructor arguments
+
+    The object is completely initialized
+    immediately after its creation.
+
+    Spring internally performs something similar to:
+
+        new Developer("Danish", 2);
+
+    instead of
+
+        Developer dev = new Developer();
+        dev.setName("Danish");
+        dev.setExperience(2);
+
+    -->
+
+    <bean id="developer"
+          class="com.danish.xvi.springbasics.injection.constructor.primitive.Developer">
+
+        <constructor-arg
+                value="Danish"/>
+
+        <constructor-arg
+                value="2"/>
+
+    </bean>
+
+</beans>

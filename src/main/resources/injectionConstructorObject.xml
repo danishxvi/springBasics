@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    =============================================================
+    CONSTRUCTOR INJECTION USING OBJECT REFERENCE
+    =============================================================
+
+    Here we are injecting another Spring Bean.
+
+    Primitive Injection
+
+        <constructor-arg value="Danish"/>
+
+    Object Injection
+
+        <constructor-arg ref="laptop"/>
+
+    value
+        ↓
+    Injects primitive values
+
+    ref
+        ↓
+    Injects another Spring Bean.
+
+    Spring first creates every required dependency.
+
+    Then it creates the dependent object.
+
+    Internally this behaves similar to:
+
+        Laptop laptop = new Laptop();
+
+        Developer developer =
+                new Developer(laptop);
+
+    Notice that our code never uses
+
+        new Laptop();
+
+    Spring performs object creation for us.
+    -->
+
+    <bean id="laptop"
+          class="com.danish.xvi.springbasics.injection.constructor.object.Laptop"/>
+
+    <bean id="developer"
+          class="com.danish.xvi.springbasics.injection.constructor.object.Developer">
+
+        <constructor-arg ref="laptop"/>
+
+    </bean>
+
+</beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    Constructor Argument Resolution using INDEX
+
+    index="0" -> first parameter
+
+    index="1" -> second parameter
+
+    index="2" -> third parameter
+    -->
+
+    <bean id="employee"
+          class="com.danish.xvi.springbasics.injection.constructor.ambiguity.Employee">
+
+        <constructor-arg
+                index="0"
+                value="Danish"/>
+
+        <constructor-arg
+                index="1"
+                value="22"/>
+
+        <constructor-arg
+                index="2"
+                value="Delhi"/>
+
+    </bean>
+
+</beans>

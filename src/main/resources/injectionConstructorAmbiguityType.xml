@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    Constructor Argument Resolution using TYPE
+
+    Spring searches constructor parameters
+    having matching data types.
+    -->
+
+    <bean id="employee"
+          class="com.danish.xvi.springbasics.injection.constructor.ambiguity.Employee">
+
+        <constructor-arg
+                type="java.lang.String"
+                value="Danish"/>
+
+        <constructor-arg
+                type="int"
+                value="22"/>
+
+        <constructor-arg
+                type="java.lang.String"
+                value="Delhi"/>
+
+    </bean>
+
+</beans>

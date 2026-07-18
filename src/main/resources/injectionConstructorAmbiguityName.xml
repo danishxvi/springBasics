@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    Constructor Argument Resolution using NAME
+
+    Spring matches values using the
+    constructor parameter names.
+
+    XML order does not matter.
+    -->
+
+    <bean id="employee"
+          class="com.danish.xvi.springbasics.injection.constructor.ambiguity.Employee">
+
+        <constructor-arg
+                name="city"
+                value="Delhi"/>
+
+        <constructor-arg
+                name="name"
+                value="Danish"/>
+
+        <constructor-arg
+                name="age"
+                value="22"/>
+
+    </bean>
+
+</beans>
