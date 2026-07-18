@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    ============================================================
+    SETTER INJECTION USING NON-PRIMITIVE (OBJECT) TYPE
+    ============================================================
+
+    Unlike primitive setter injection where values are injected
+    using the "value" attribute,
+
+    Here we inject another Spring bean.
+
+    Primitive Example
+
+        <property name="name" value="Danish"/>
+
+    Object Example
+
+        <property name="laptop" ref="laptop"/>
+
+    "ref" means
+
+    "Find another bean inside the IoC Container
+    whose id is laptop and inject that object."
+
+    Spring performs the following steps:
+
+    1. Create Laptop object.
+
+    2. Create Developer object.
+
+    3. Call Developer.setLaptop(laptopObject)
+
+    4. Store both objects inside the IoC Container.
+
+    The Developer object never creates Laptop
+    using the new keyword.
+    -->
+
+    <bean id="laptop"
+          class="com.danish.xvi.springbasics.setter.object.Laptop"/>
+
+    <bean id="developer"
+          class="com.danish.xvi.springbasics.injection.setter.object.Developer">
+
+        <property
+                name="laptop"
+                ref="laptop"/>
+
+    </bean>
+
+</beans>

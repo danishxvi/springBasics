@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    ============================================================
+                     SETTER INJECTION (PRIMITIVE TYPES)
+    ============================================================
+
+    This bean demonstrates Setter Injection.
+
+    Instead of passing values through the constructor,
+    Spring first creates the object by calling the
+    default constructor.
+
+    After the object has been created,
+    Spring calls the setter methods one by one
+    and injects the required values.
+
+    Internally Spring performs:
+
+    Step 1
+    Create Developer object.
+
+    Step 2
+    Call setName("Danish")
+
+    Step 3
+    Call setExperience(5)
+
+    Step 4
+    Store fully initialized bean inside the IoC Container.
+
+    Notice that the values inside <property>
+    correspond to the setter methods.
+
+    name="name"
+            ↓
+    setName(...)
+
+    name="experience"
+            ↓
+    setExperience(...)
+    -->
+
+    <bean id="developer"
+          class="com.danish.xvi.springbasics.injection.setter.primitive.Developer">
+
+        <property
+                name="name"
+                value="Danish"/>
+
+        <property
+                name="experience"
+                value="5"/>
+
+    </bean>
+
+</beans>
