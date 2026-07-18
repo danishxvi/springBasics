@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    ==============================================================================================
+                                    AUTOWIRE BY NAME
+    ==============================================================================================
+
+    What is Autowiring?
+
+    Autowiring is a feature provided by the Spring IoC Container
+    which automatically injects dependencies into a bean.
+
+    Without autowiring, we manually write
+
+        <property name="computer" ref="computer"/>
+
+    Spring internally performs
+
+        developer.setComputer(computerBean);
+
+    Every dependency must be explicitly mentioned.
+
+    With autowiring, we simply tell Spring
+
+        "You figure out the dependency."
+
+    Spring searches the IoC Container
+    and injects the dependency automatically.
+
+    ==============================================================================================
+    HOW DOES byName WORK?
+    ==============================================================================================
+
+    Consider the following property inside Developer.java
+
+        private Computer computer;
+
+    and its setter
+
+        setComputer(Computer computer)
+
+    The PROPERTY NAME is
+
+            computer
+
+    Spring now searches the IoC Container for
+
+            id="computer"
+
+    If a bean with this id exists,
+
+    Spring automatically performs
+
+            developer.setComputer(computerBean);
+
+    No <property> tag is required.
+
+    ==============================================================================================
+    IMPORTANT
+
+    byName DOES NOT LOOK AT
+
+            Laptop
+
+    or
+
+            Computer
+
+    It ONLY checks
+
+            PROPERTY NAME
+
+    ==============================================================================================
+    -->
+
+    <!--
+        ==========================================================================================
+        COMPUTER BEAN
+        ==========================================================================================
+
+        Bean ID
+
+                computer
+
+        This is VERY IMPORTANT.
+
+        Since the property name inside Developer.java is
+
+                computer
+
+        the bean id must also be
+
+                computer
+
+        If you change the id to
+
+                laptop
+
+        Spring will NOT find the dependency.
+
+        Result
+
+                computer == null
+
+        and later
+
+                NullPointerException
+    -->
+
+    <bean id="computer"
+          class="com.danish.xvi.springbasics.autowire.byname.Laptop"/>
+
+    <!--
+        ==========================================================================================
+        DEVELOPER BEAN
+        ==========================================================================================
+
+        autowire="byName"
+
+        tells Spring
+
+        "Inspect all setter methods.
+
+        Find their property names.
+
+        Search the IoC Container
+
+        for bean ids having the same name.
+
+        Inject them automatically."
+
+        Spring performs
+
+                setComputer(computerBean)
+
+        without requiring
+
+                <property>
+
+        configuration.
+    -->
+
+    <bean id="developer"
+          class="com.danish.xvi.springbasics.autowire.byname.Developer"
+          autowire="byName"/>
+
+</beans>

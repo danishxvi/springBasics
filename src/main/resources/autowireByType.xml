@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    ============================================================================================
+                                  AUTOWIRE BY TYPE
+    ============================================================================================
+
+    Unlike byName,
+
+    Spring DOES NOT search using the Bean ID.
+
+    Instead it searches using the Property Type.
+
+    Developer contains
+
+            private Computer computer;
+
+    Property Type
+
+            Computer
+
+    Spring now searches the IoC Container
+
+    for ONE bean whose type matches Computer.
+
+    Since Laptop implements Computer,
+
+    Laptop satisfies the requirement.
+
+    Spring internally performs
+
+            developer.setComputer(laptopBean);
+
+    No <property> tag is required.
+
+    ============================================================================================
+    -->
+
+    <!--
+        Notice the Bean ID.
+
+        It is NOT
+
+                computer
+
+        It is
+
+                myLaptop
+
+        This proves
+
+        byType completely ignores
+        the Bean ID.
+
+        It only checks the Bean Type.
+    -->
+
+    <bean id="myLaptop"
+          class="com.danish.xvi.springbasics.autowire.bytype.Laptop"/>
+
+    <!--
+        Spring checks every setter method.
+
+        Finds
+
+                setComputer()
+
+        Parameter Type
+
+                Computer
+
+        Searches the IoC Container
+
+        Finds Laptop Bean
+
+        Calls
+
+                setComputer(laptopBean)
+
+        automatically.
+    -->
+
+    <bean id="developer"
+          class="com.danish.xvi.springbasics.autowire.bytype.Developer"
+          autowire="byType"/>
+
+</beans>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    ============================================================================================
+                                 MULTIPLE IMPLEMENTATIONS
+    ============================================================================================
+
+    Both Laptop and Desktop implement
+
+                Computer
+
+    Therefore both are valid candidates
+    for dependency injection.
+
+            Computer
+                ▲
+                │
+      ┌─────────┴─────────┐
+      │                   │
+      │                   │
+    Laptop            Desktop
+
+    ============================================================================================
+    -->
+
+    <!--
+        =========================================================================================
+        PRIMARY BEAN
+        =========================================================================================
+
+        This bean is marked as
+
+                primary="true"
+
+        Meaning
+
+        "If multiple beans satisfy a dependency,
+        prefer THIS bean."
+
+        Spring gives higher priority
+        to this bean during autowiring.
+    -->
+
+    <bean id="laptop"
+          class="com.danish.xvi.springbasics.autowire.primary.Laptop"
+          primary="true"/>
+
+    <!--
+        This bean is also a Computer.
+
+        However,
+
+        since it is NOT marked as primary,
+
+        Spring will ignore it
+
+        when another matching bean
+
+        has
+
+                primary="true"
+    -->
+
+    <bean id="desktop"
+          class="com.danish.xvi.springbasics.autowire.primary.Desktop"/>
+
+    <!--
+        =========================================================================================
+        DEVELOPER BEAN
+        =========================================================================================
+
+        autowire="byType"
+
+        tells Spring
+
+        Ignore Bean IDs.
+
+        Instead,
+
+        inspect the setter methods.
+
+        Find
+
+                setComputer(Computer)
+
+        Property Type
+
+                Computer
+
+        Search every bean
+
+        implementing Computer.
+
+        Spring now finds
+
+                Laptop
+
+        and
+
+                Desktop
+
+        Since Laptop is marked
+
+                primary="true"
+
+        Spring selects Laptop.
+
+        Internally Spring performs
+
+                developer.setComputer(laptopBean);
+
+        automatically.
+    -->
+
+    <bean id="developer"
+          class="com.danish.xvi.springbasics.autowire.primary.Developer"
+          autowire="byType"/>
+
+</beans>
