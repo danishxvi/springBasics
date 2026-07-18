@@ -5,5 +5,5 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- bean definitions here -->
-	<bean id="developer" class="com.danish.xvi.springbasics.Developer"></bean>
+	<bean id="developer" class="com.danish.xvi.springbasics.configuration.xml.applicationcontext.Developer"></bean>
 </beans>

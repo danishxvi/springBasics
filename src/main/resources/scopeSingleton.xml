@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Root element of every Spring XML configuration. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Bean Definition id Unique name of the bean. class Fully qualified class 
+		name. scope singleton (default) -->
+
+	<bean id="student"
+		class="com.danish.xvi.springbasics.scope.singleton.Student"
+		scope="singleton">
+
+		<property name="name" value="Danish Husain" />
+
+	</bean>
+
+</beans>
