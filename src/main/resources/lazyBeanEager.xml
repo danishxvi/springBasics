@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    ============================================================================================
+
+                      LAZY BEAN DEPENDED UPON BY A NON-LAZY BEAN
+
+    ============================================================================================
+
+    Laptop Bean
+
+        lazy-init="true"
+
+    Developer Bean
+
+        default singleton
+        (NOT lazy)
+
+    Normally,
+
+    Spring would postpone creating Laptop.
+
+    However,
+
+    Developer depends upon Laptop.
+
+    Therefore,
+
+    before Spring can finish creating Developer,
+
+    it MUST create Laptop.
+
+    This is why Laptop is instantiated
+    even though it is marked as lazy.
+
+    ============================================================================================
+    -->
+
+    <bean id="computer"
+          class="com.danish.xvi.springbasics.lazybean.eager.Laptop"
+          lazy-init="true"/>
+
+    <bean id="developer"
+          class="com.danish.xvi.springbasics.lazybean.eager.Developer">
+
+        <property name="computer"
+                  ref="computer"/>
+
+    </bean>
+
+</beans>

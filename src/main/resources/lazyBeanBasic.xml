@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    ============================================================================================
+
+                                   LAZY INITIALIZATION
+
+    ============================================================================================
+
+    By default,
+
+    every Singleton Bean is created
+    when the ApplicationContext starts.
+
+    This behaviour is called
+
+            Eager Initialization.
+
+    Example
+
+        ApplicationContext Created
+
+                ↓
+
+        Spring creates all Singleton Beans
+
+                ↓
+
+        getBean()
+
+        simply returns an already existing object.
+
+
+    lazy-init="true"
+
+    changes this behaviour.
+
+    Spring DOES NOT create the bean
+    during container startup.
+
+    Instead,
+
+    Spring stores only the Bean Definition.
+
+    Actual object creation happens only when
+
+            getBean()
+
+    requests the bean.
+
+    ============================================================================================
+    -->
+
+    <bean id="laptop"
+          class="com.danish.xvi.springbasics.lazybean.basic.Laptop"
+          lazy-init="true"/>
+
+</beans>
